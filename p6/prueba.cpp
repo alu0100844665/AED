@@ -24,15 +24,15 @@ public:
 
 	void generate(int i, vector<int>& sol)
 	{
-		if (i <= 0) 
+		if (i <= 0)
 			evaluate(sol);
 	 	else {
-	
+
 			for(int j = 0; j < base_; j++){
 				sol[i - 1] = j;
 				generate(i - 1, sol);
 			}
-		}		
+		}
 	}
 
 	void generate(void)
@@ -46,7 +46,7 @@ public:
 		for(int i = n_digits_ -1; i >= 0; i --)
 			cout << output_[sol[i]];
 		cout << endl;
-	} 
+	}
 };
 
 
@@ -55,8 +55,8 @@ int main(void)
 	generator_t gen_bin(2, 4);
 	gen_bin.generate();
 
-	generator_t gen_hex(16, 4);
-	gen_hex.generate();
+	//generator_t gen_hex(16, 4);
+	//gen_hex.generate();
 
 	return 0;
 }

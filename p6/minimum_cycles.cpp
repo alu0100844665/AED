@@ -1,16 +1,22 @@
-
+#include <iostream>
+#include <vector>
 class minimum_cycles
 {
 private:
-      const int n_;
-
-      vector<int> sol_;
-
-      int best_value_;
-      vector<int> best_sol_;
+      const int n_; //constante n_ entera que almacene el número de vértices del grafo
+      vector<int> sol_; //  vector sol_ de enteros que almacene el vector de incidencia computado hasta el momento
+      int best_value_; // variable best_val_ entera que almacene el mejor valor computado hasta el momento
+      vector<int> best_sol_; //  vector best_sol_ de enteros que almacene el mejor vector de incidencia computado hasta el momento
 public:
+      //inicializar n_ con un tamaño determinado
+      //el vector sol_ con el tamaño n_ x n_ , y valor cero para cada elemento
+      //la variable best_sol_ con el valor numeric_limits<int>::max()
+      //vector best_sol_, de manera similar a sol_.
       minimum_cycles(int n):
-      {}
+      {
+        //n_ = 2 ^ n;
+
+      }
 
       ~minimum_cycles(void) {}
 
@@ -18,16 +24,16 @@ public:
       {
             generate(n_ * n_, cost);
       }
-      
+
       void write(ostream& os)
       {}
 
       void generate(int i, const vector<int>& cost)
       {
             if (i <= 0) {
-                  
+
                /* */
-                
+
             }
 
             sol_[i - 1] = 1;
@@ -38,8 +44,10 @@ public:
 
 
       int pos(int i, int j) const
-      {}
-      
+      {
+        //la posición i * n + j del vector.
+      }
+
       bool no_diag(void)
       {}
 
