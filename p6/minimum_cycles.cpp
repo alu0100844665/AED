@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <math.h>
+#include <climits>
 class minimum_cycles
 {
 private:
@@ -14,7 +16,14 @@ public:
       //vector best_sol_, de manera similar a sol_.
       minimum_cycles(int n):
       {
-        //n_ = 2 ^ n;
+        n_ = pow(2,n);
+        sol_.resize(n*n);
+        for(int i = 0;i < sol_.size();i++)
+          sol_[i]=0;
+        best_sol_ = INT_MAX;
+        best_sol.resize(n*n);
+        for(int i = 0;i < best_sol.size();i++)
+          best_sol[i]=0;
 
       }
 
@@ -26,7 +35,15 @@ public:
       }
 
       void write(ostream& os)
-      {}
+      {
+        int n = n_ / 2;
+        for (int i = 0;i < sol_.size();i++)
+        {
+          os << sol_[i];
+          if(i % n == n )
+            os << "\n"
+        }
+      }
 
       void generate(int i, const vector<int>& cost)
       {
@@ -46,6 +63,7 @@ public:
       int pos(int i, int j) const
       {
         //la posición i * n + j del vector.
+        return (i * n_ + j);
       }
 
       bool no_diag(void)
@@ -53,10 +71,12 @@ public:
 
       void compute_in_degree(vector<int>& id)
       {
+        // grado de entrada para el vector sol_
       }
 
       void compute_out_degree(vector<int>& od)
       {
+        //grado de salida para el vector sol_
       }
 
       void compute_degree(vector<int>& id, vector<int>& od)
